@@ -1,66 +1,51 @@
 # LinkedIn post (primary)
 
-I spent the last few weeks testing one question:
+For a while I had a recurring problem that was really a dependency problem in disguise.
 
-Do Hebrew STEM students actually need frontier AI models — or are cheaper models already good enough?
+Whenever I needed AI to reliably solve hard STEM — calculus, physics, linear algebra, discrete math — the answer was always "use a closed frontier model." Not because I wanted to, but because it was the only tier that got things right often enough.
 
-Almost every LLM benchmark is in English. So I built my own for Hebrew (right-to-left), across five
-first-year subjects: mechanics, electromagnetism, calculus, linear algebra, and discrete math.
+But defaulting to a closed model has a hidden cost beyond the bill: your reasoning engine lives on someone else's servers, priced and rate-limited by them, and every prompt you send is a data-exposure event.
 
-Then I ran 8 models × 3 prompt styles × 2 grounding modes (zero-shot and RAG) → 720 blind-graded
-answers. Total cost to run the whole thing: $16.50.
+So I tested a narrower, more useful question: can an open-weight model — small enough to run on a single machine I control — be pushed to match frontier accuracy inside one bounded vertical?
 
-The surprising result: the prompt barely mattered.
+I built a Hebrew STEM benchmark: 5 subjects, 8 models, 3 prompt styles, zero-shot vs RAG, 720 blind-graded answers, $16.50 total.
 
-I built a careful "distilled" system prompt — the reasoning discipline and common-mistake checklists of
-a big frontier prompt, squeezed into a short one. Accuracy lift over a plain prompt? ≈ 0. The models
-were already near the ceiling.
+The number people will quote is cost: a self-hostable open model matched frontier accuracy at ~117× lower cost per correct answer.
 
-The real result: cost.
+But the real finding is deployability. 3 of the 4 models I tested run on hardware you own. The frontier one — the default choice for hard reasoning — can't be self-hosted at all.
 
-A 31B open model (Gemma 4 31B) matched the frontier's accuracy at ~$0.0007 per correct answer —
-roughly 117× cheaper than GPT-5.5. Another cheap model (DeepSeek V4) matched it at ~24× cheaper. Only
-one small model was clearly weaker, so the test still separates good from bad.
+And it's not "cheap always wins": one open model (Llama 4 Maverick) was clearly weaker (~0.86). The rule is the cheapest, most deployable model that still clears your accuracy floor.
 
-My takeaway as a builder:
+The prompt engineering I expected to be the hero barely moved accuracy — the models were already near the ceiling. The unlock was the combination: retrieval grounding + a short vertical-specific prompt, running on a model you actually own.
 
-For a bounded job like STEM tutoring, the right question isn't "what's the smartest model?"
+For a bounded vertical, you may not need to rent the frontier at all.
 
-It's: "what's the cheapest model that clears the accuracy floor for THIS vertical?"
+Full independent report, data, code, and DOI in the comments.
 
-If you're shipping an AI feature, benchmark your vertical. You might be paying 100× for accuracy you
-already had.
-
-I'm publishing the full independent research report — data, prompts, code, and blind grades — here: https://github.com/adam-shlomo/rag-tier-benchmark
-
-(Independent research, not peer-reviewed; original benchmark I wrote myself. Honest caveat: the task is
-near-ceiling, so this ranks cost, not the very top of capability — the report says so plainly.)
-
-#AI #LLM #MachineLearning #EdTech #PromptEngineering
+#AI #LLM #OpenSource #MachineLearning #EdTech
 
 ---
 
-# LinkedIn post (shorter alt / hook variant)
+# LinkedIn post (shorter / hook variant)
 
 Everyone's asking which AI model is smartest.
 
-For my product (STEM tutoring in Hebrew) I asked a cheaper question: which is the cheapest model that's
-*good enough*?
+For my product I asked a different question: which model can I run without depending on one I don't own?
 
-So I built a Hebrew RTL STEM benchmark — 8 models, 720 blind-graded answers, $16.50 total.
+I built a Hebrew STEM benchmark — 8 models, 720 blind-graded answers, $16.50.
 
-Result: accuracy was basically tied at the top. A 31B open model matched a frontier model's accuracy at
-~117× lower cost per correct answer. The fancy prompt I engineered? Barely moved the needle.
+Accuracy came out basically tied at the top. But 3 of the 4 models are open-weight and self-hostable on a single machine; the frontier one is API-only. A self-hostable open model matched frontier accuracy at ~117× lower cost per correct answer.
 
-Lesson: benchmark your vertical. You may be paying 100× for accuracy you already had.
+The clever prompt I engineered? Barely moved the needle — the models were already near ceiling.
 
-Full independent report + data + code: https://github.com/adam-shlomo/rag-tier-benchmark
+The takeaway: for a bounded vertical, the real question isn't "how smart" — it's "can I run this myself, and does it clear my accuracy floor?"
+
+Full report + data + code + DOI in comments.
 
 ---
 
 ## Posting notes
-- Post as text (LinkedIn suppresses reach on posts with outbound links) — OR put the link in the first
-  comment and say "link in comments."
-- Optional carousel (5–6 slides) from the report figures: (1) the question, (2) the setup, (3) "prompt
-  ≈ 0 lift", (4) the cost table, (5) "benchmark your vertical", (6) link.
-- Keep the honest caveat in — it reads as credible, not weak.
+- Put the links in the FIRST COMMENT, not the post body (LinkedIn suppresses reach on posts with outbound links). End the post with "links in comments."
+- First-comment text: `Full report, data, code: https://github.com/adam-shlomo/rag-tier-benchmark · Archived (DOI): https://doi.org/10.5281/zenodo.21209734`
+- Optional carousel (5–6 slides) from the report figures: (1) the dependency problem, (2) the deployability table (open vs closed / self-hostable), (3) "prompt ≈ 0 lift", (4) cost per correct (117×), (5) "cheapest model that clears your floor", (6) links.
+- Lead identity: *independent builder publishing reproducible research*, not academic.
