@@ -38,14 +38,16 @@ stops being *capability* and becomes **deployability, control, and cost.**
 | Model | Weights | Self-hostable? | Accuracy | Cost / correct answer |
 |---|---|---|:--:|:--:|
 | **GPT-5.5** | **Closed** | ❌ API-only (OpenAI) | ~0.99 | $0.084 |
-| DeepSeek V4 Pro | Open (1.6T total / 49B active) | ✅ single multi-GPU server¹ | ~0.99 | $0.0035 (~24× cheaper) |
-| Llama 4 Maverick | Open (400B total / 17B active) | ✅ single H100, FP8¹ | 0.86 | — (below the floor) |
-| **Gemma 4 31B** | **Open, dense** | ✅ consumer GPU / workstation | ~0.99 | **$0.00071 (~117× cheaper)** |
+| DeepSeek V4 Pro | Open (1.6T / 49B active) | ✅ single 8×H100 server¹ | ~0.99 | $0.0035 (~24× cheaper) |
+| Llama 4 Maverick | Open (400B / 17B active) | ✅ single H100 DGX (FP8)² | 0.86 | — (below the floor) |
+| **Gemma 4 31B** | **Open, dense 30.7B** | ✅ single consumer GPU (24 GB)³ | ~0.99 | **$0.00071 (~117× cheaper)** |
 
-¹ Deployment specifics per each vendor's model card. *Three of four run on hardware you control; the
-one that can't is the one people default to.* For a bounded vertical, **RAG + a short vertical prompt
-let self-hostable open-weight models close the gap to the closed frontier model** — and the cost
-collapse is a *consequence* of that, not the headline by itself.
+Deployment specs from vendors' own model cards: ¹ [DeepSeek V4 Pro](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro) ·
+² [Llama 4 Maverick FP8](https://huggingface.co/meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8) ·
+³ [Gemma 4 31B](https://ai.google.dev/gemma/docs/core). *Three of four run on hardware you control — from a
+$2k consumer card (Gemma) to a datacenter node (DeepSeek); the one that can't be self-hosted at all is the
+one people default to.* For a bounded vertical, **RAG + a short vertical prompt let self-hostable open-weight
+models close the gap to the closed frontier model** — and the cost collapse is a *consequence* of that.
 
 ## Deployability ≠ clearing the bar
 

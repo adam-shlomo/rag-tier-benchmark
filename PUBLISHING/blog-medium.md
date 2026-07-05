@@ -53,11 +53,11 @@ Once accuracy is close to tied, the more useful question isn't "which model is s
 Here's where the four models tested actually sit:
 
 - **GPT-5.5** — closed-weight. Available only through OpenAI's API. Cannot be self-hosted at any scale, on any number of machines.
-- **DeepSeek V4 Pro** — open-weight, 1.6T total / 49B active parameters. Documented by DeepSeek as deployable on a single multi-GPU server.
-- **Llama 4 Maverick** — open-weight, 400B total / 17B active parameters. Meta's own model card states the FP8 weights fit on a single H100 host.
-- **Gemma 4 31B** — open-weight, dense, explicitly built for consumer GPUs and workstations — the most single-node-friendly of the four.
+- **DeepSeek V4 Pro** — open-weight (MIT), 1.6T total / 49B active parameters. Self-hostable on a single **8× H100 server** — a datacenter-class node, but one you can own and run air-gapped, not an API you rent. (DeepSeek also ships a smaller V4-Flash that fits on a single 80 GB GPU.)
+- **Llama 4 Maverick** — open-weight, 400B total / 17B active parameters. Meta's own model card states the **FP8 weights fit on a single H100 DGX host**.
+- **Gemma 4 31B** — open-weight (Apache 2.0), dense 30.7B, built for **consumer GPUs** — it runs on a single 24 GB card like an RTX 4090. The most single-node-friendly of the four.
 
-Three of the four models tested can run entirely on hardware you control, with no dependency on a hyperscale provider. The fourth — the one usually treated as the default choice for hard academic reasoning — can't be deployed that way at all.
+Three of the four models tested can run entirely on hardware you control — from a consumer GPU (Gemma) to a single datacenter server (DeepSeek) — with no dependency on a hyperscale provider. The fourth — the one usually treated as the default choice for hard academic reasoning — can't be deployed that way at all.
 
 That's the actual unlock in this data: for a bounded vertical like STEM reasoning, retrieval grounding plus a short, domain-specific prompt let self-hostable, open-weight models close the gap to a closed-weight frontier model. The cost collapse below is a consequence of that, not the headline by itself.
 
@@ -79,7 +79,9 @@ So the lesson isn't "always pick the smallest, cheapest, most self-hostable mode
 
 ## Why This Extends Beyond One Benchmark
 
-This isn't just a benchmarking curiosity. There's a growing argument in startup and VC circles that if a product's entire value sits on top of a closed model you don't own, the company that owns that model has both visibility into your usage and the incentive to eventually build your differentiating feature directly into the base model. A moat built entirely on a rented, closed foundation isn't a moat you actually control.
+This isn't just a benchmarking curiosity. On CNBC's *Squawk Box* on July 1, 2026, Palantir CEO Alex Karp argued that AI companies are imposing a "wealth tax" on businesses — charging heavily for tokens while harvesting the proprietary data those businesses feed in, using it to improve the labs' own models ([CNBC](https://www.cnbc.com/2026/07/01/palantir-karp-open-ai-anthropic-tokens.html)).
+
+Karp was talking about large enterprises, not specifically about smaller products built as thin layers on top of frontier APIs — but the underlying concern is the same one that's been circulating in startup and VC circles for a while: if a product's entire value sits on a closed model you don't own, the company that owns that model has both visibility into your usage and the incentive to eventually build your differentiating feature directly into the base model. A moat built entirely on a rented, closed foundation isn't a moat you actually control.
 
 That's the same argument this benchmark supports, at a much smaller scale. For a specific, well-defined vertical, an open-weight model plus retrieval grounding plus a short domain-specific prompt can close most of the gap to a closed frontier model — without handing your data, your prompts, or your product's differentiation to whichever lab is ahead this particular quarter. My own view, based on this data but not proven by it alone, is that the durable long-term position for vertical AI products isn't defaulting to the biggest general-purpose model available — it's a smaller, task-specific, vertical-optimized model you actually own.
 
@@ -111,6 +113,13 @@ I'd read this as: for a bounded academic reasoning task, capable open-weight mod
 ## Disclosure
 
 I'm the solo builder of StudAI, a study assistant for university students. This research directly informed decisions I'm making for that product, which is part of why I cared about testing deployability and not just accuracy.
+
+## Sources (deployment specs + quotes)
+
+- DeepSeek V4 Pro — [Hugging Face model card](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro) (1.6T/49B active, MIT)
+- Llama 4 Maverick — [Meta model card](https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md) · [FP8 weights on Hugging Face](https://huggingface.co/meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8) ("fits on a single H100 DGX host")
+- Gemma 4 31B — [Google AI docs](https://ai.google.dev/gemma/docs/core) · [model card](https://huggingface.co/google/gemma-4-31B) (30.7B dense, Apache 2.0, consumer-GPU)
+- Alex Karp "wealth tax" — [CNBC, July 1 2026](https://www.cnbc.com/2026/07/01/palantir-karp-open-ai-anthropic-tokens.html)
 
 ## Links
 
