@@ -1,0 +1,11 @@
+maxprompts/
+*.bak
+straggler.log
+__pycache__/
+.DS_Store
+benchmark/smoke*.jsonl
+benchmark/max_manifest.json
+benchmark/max_retry.json
+benchmark/anthropic_corrected_raw.json
+benchmark/__pycache__/
+PUBLISHING/00-READ-FIRST.md

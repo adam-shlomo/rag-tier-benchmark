@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this benchmark, data, or report, please cite it as below."
+title: "Distilled Vertical Prompts for Efficient STEM Reasoning: Cheap Models Match Frontier Accuracy on Hebrew RTL Problems at a Fraction of the Cost"
+abstract: >-
+  An independent technical research report and reproducible benchmark. Eight LLMs across three cost
+  tiers are evaluated on an original, self-contained Hebrew (RTL) STEM corpus (mechanics,
+  electromagnetism, linear algebra, calculus, discrete mathematics) under three prompt levels and
+  zero-shot vs. RAG (720 blind-graded cells). Accuracy is near-ceiling and prompt lift is ~0; the
+  differentiator is cost per correct answer, where a Tier-3 open model matches frontier accuracy at
+  roughly 117x lower cost than a frontier model.
+type: dataset
+authors:
+  - given-names: Adam
+    family-names: Shlomo
+    email: adam1shlomo@gmail.com
+keywords:
+  - large language models
+  - benchmark
+  - prompt engineering
+  - retrieval-augmented generation
+  - STEM reasoning
+  - Hebrew
+  - right-to-left
+  - cost efficiency
+license: CC-BY-4.0
+version: "1.0"
+date-released: "2026-07-05"
+# After you enable Zenodo and publish a GitHub release, paste the minted DOI here:
+# doi: 10.5281/zenodo.XXXXXXX

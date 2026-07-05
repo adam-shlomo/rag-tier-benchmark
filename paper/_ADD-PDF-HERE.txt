@@ -1,0 +1,1 @@
+NOTE: add your final PDF/DOCX to paper/ before the v1.0 release.
