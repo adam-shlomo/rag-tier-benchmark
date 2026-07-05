@@ -6,7 +6,7 @@ An **independent technical research report** and fully reproducible benchmark by
 *Not peer-reviewed. Not affiliated with any university or model provider.* See the disclaimer below.
 
 📄 Report: [`paper/distilled-vertical-prompts.pdf`](paper/distilled-vertical-prompts.pdf) (with figures) · [editable source (.docx)](paper/distilled-vertical-prompts.docx) · 🔁 Code: [`benchmark/`](benchmark/) · 📊 Data: [`corpus.json`](corpus.json) + grades in [`benchmark/`](benchmark/)
-<!-- After Zenodo: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX) -->
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21209734.svg)](https://doi.org/10.5281/zenodo.21209734)
 
 ---
 
@@ -65,7 +65,11 @@ python analyze.py       --grades grades.jsonl                    # cost/correct,
 
 ## How to cite
 
-See [`CITATION.cff`](CITATION.cff). Once archived on Zenodo, cite the DOI.
+Archived on Zenodo — cite the DOI:
+
+> Adam Shlomo (2026). *Distilled Vertical Prompts for Efficient STEM Reasoning: Cheap Models Match Frontier Accuracy on Hebrew RTL Problems at a Fraction of the Cost.* Zenodo. https://doi.org/10.5281/zenodo.21209734
+
+Machine-readable metadata: [`CITATION.cff`](CITATION.cff).
 
 ## Limitations (read before over-generalizing)
 

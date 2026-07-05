@@ -25,5 +25,8 @@ keywords:
 license: CC-BY-4.0
 version: "1.0"
 date-released: "2026-07-05"
-# After you enable Zenodo and publish a GitHub release, paste the minted DOI here:
-# doi: 10.5281/zenodo.XXXXXXX
+doi: 10.5281/zenodo.21209734
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.21209734
+    description: "Concept DOI (always resolves to the latest version)"
