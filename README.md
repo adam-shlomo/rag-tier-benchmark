@@ -5,7 +5,7 @@
 An **independent technical research report** and fully reproducible benchmark by **Adam Shlomo**.
 *Not peer-reviewed. Not affiliated with any university or model provider.* See the disclaimer below.
 
-📄 Report (with figures): [`paper/distilled-vertical-prompts.docx`](paper/distilled-vertical-prompts.docx) · [Markdown version](paper/distilled-vertical-prompts.md) · 🔁 Code: [`benchmark/`](benchmark/) · 📊 Data: [`corpus.json`](corpus.json) + grades in [`benchmark/`](benchmark/)
+📄 Report: [`paper/distilled-vertical-prompts.pdf`](paper/distilled-vertical-prompts.pdf) (with figures) · [editable source (.docx)](paper/distilled-vertical-prompts.docx) · 🔁 Code: [`benchmark/`](benchmark/) · 📊 Data: [`corpus.json`](corpus.json) + grades in [`benchmark/`](benchmark/)
 <!-- After Zenodo: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX) -->
 
 ---
@@ -44,7 +44,7 @@ primary metric; the headline is **cost per correct answer**.
 
 ```
 rag-tier-benchmark/
-  paper/            report (DOCX with figures + Markdown)
+  paper/            report — distilled-vertical-prompts.pdf (with figures) + .docx source
   prompts/          L0_plain / L1_reasoning / L2_distilled_vertical (original text)
   corpus.json       full 20-question corpus (passages + questions + answer keys)
   corpus_run.json   the priced 15-question run subset
