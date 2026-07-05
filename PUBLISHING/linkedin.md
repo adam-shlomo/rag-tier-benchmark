@@ -31,7 +31,7 @@ It's: "what's the cheapest model that clears the accuracy floor for THIS vertica
 If you're shipping an AI feature, benchmark your vertical. You might be paying 100× for accuracy you
 already had.
 
-I'm publishing the full independent research report — data, prompts, code, and blind grades — here: [link]
+I'm publishing the full independent research report — data, prompts, code, and blind grades — here: https://github.com/adam-shlomo/rag-tier-benchmark
 
 (Independent research, not peer-reviewed; original benchmark I wrote myself. Honest caveat: the task is
 near-ceiling, so this ranks cost, not the very top of capability — the report says so plainly.)
@@ -54,7 +54,7 @@ Result: accuracy was basically tied at the top. A 31B open model matched a front
 
 Lesson: benchmark your vertical. You may be paying 100× for accuracy you already had.
 
-Full independent report + data + code: [link]
+Full independent report + data + code: https://github.com/adam-shlomo/rag-tier-benchmark
 
 ---
 

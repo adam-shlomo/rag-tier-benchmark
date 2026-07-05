@@ -87,8 +87,8 @@ straight about what it does and doesn't show:
 
 ## Links
 
-- **Full report + data + code (GitHub):** [link]
-- **Archived version (DOI):** [Zenodo link, if minted]
+- **Full report + data + code (GitHub):** https://github.com/adam-shlomo/rag-tier-benchmark
+- **Archived version (DOI):** https://doi.org/10.5281/zenodo.21209734
 
 *Independent research by Adam Shlomo, in a personal capacity — not affiliated with, endorsed by, or
 reviewed by any university or model provider. All passages and questions are original works by the
