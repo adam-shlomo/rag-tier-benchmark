@@ -5,7 +5,7 @@
 An **independent technical research report** and fully reproducible benchmark by **Adam Shlomo**.
 *Not peer-reviewed. Not affiliated with any university or model provider.* See the disclaimer below.
 
-📄 Report: [`paper/distilled-vertical-prompts.pdf`](paper/) · 🔁 Reproduce: [`src/`](src/) · 📊 Data: [`data/`](data/)
+📄 Report (with figures): [`paper/distilled-vertical-prompts.docx`](paper/distilled-vertical-prompts.docx) · [Markdown version](paper/distilled-vertical-prompts.md) · 🔁 Code: [`benchmark/`](benchmark/) · 📊 Data: [`corpus.json`](corpus.json) + grades in [`benchmark/`](benchmark/)
 <!-- After Zenodo: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX) -->
 
 ---
@@ -44,11 +44,12 @@ primary metric; the headline is **cost per correct answer**.
 
 ```
 rag-tier-benchmark/
-  paper/        report (PDF/DOCX/MD) + figures
-  data/         questions, passages, per-cell model outputs, blind grades, costs
-  prompts/      L0_plain / L1_reasoning / L2_distilled_vertical (original text)
-  src/          runner (OpenRouter client), grader, analysis
-  PUBLISHING/   safety checklist, blog + LinkedIn drafts
+  paper/            report (DOCX with figures + Markdown)
+  prompts/          L0_plain / L1_reasoning / L2_distilled_vertical (original text)
+  corpus.json       full 20-question corpus (passages + questions + answer keys)
+  corpus_run.json   the priced 15-question run subset
+  benchmark/        code (runner, grader, analysis) + data (runs.jsonl, grades.jsonl, summary.csv)
+  PUBLISHING/       blog + LinkedIn drafts
   LICENSE  CITATION.cff  README.md
 ```
 
@@ -56,9 +57,10 @@ rag-tier-benchmark/
 
 ```bash
 export OPENROUTER_API_KEY=...
-python src/run_benchmark.py --corpus data/corpus.json --out runs.jsonl --budget 20
-python src/grade.py     --runs runs.jsonl --out grades.jsonl     # blind rubric
-python src/analyze.py   --grades grades.jsonl                    # cost/correct, Pareto, deltas
+cd benchmark
+python run_benchmark.py --corpus ../corpus_run.json --out runs.jsonl --budget 20
+python grade.py         --runs runs.jsonl --out grades.jsonl     # blind rubric
+python analyze.py       --grades grades.jsonl                    # cost/correct, Pareto, deltas
 ```
 
 ## How to cite
