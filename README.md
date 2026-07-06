@@ -81,7 +81,6 @@ rag-tier-benchmark/
   corpus.json       full 20-question corpus (passages + questions + answer keys)
   corpus_run.json   the priced 15-question run subset
   benchmark/        code (runner, grader, analysis) + data (runs.jsonl, grades.jsonl, summary.csv)
-  PUBLISHING/       blog + LinkedIn drafts
   LICENSE  CITATION.cff  README.md
 ```
 
